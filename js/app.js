@@ -20,7 +20,7 @@ var scopes = [
   "user-top-read",
   "user-read-private",
 ]; //scopes for permissions
-var nodeHost = "http://localhost:5000"; //location of node server
+var nodeHost = "https://musicnight-backend.herokuapp.com"; //location of node server
 
 // controls how long the login element fades in milliseconds
 loginFade = 300;
