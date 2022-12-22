@@ -1,133 +1,136 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify Album Covers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap");
+    </style>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spotify Album Covers</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="css/foundation.css">
-  <link rel="stylesheet" href="css/app.css">
-
-</head>
-
-<body data-resize>
-
-  <!-- login modal -->
-  <div id="login" class="callout">
-    <div class="text">
-      <h1>Fullscreen Album Art for Spotify</h1>
-      <div class="info">
-        This app gets your currently playing track and displays the album art. The background is randomly composed of your top 50 most listened to songs and last 50 songs you have listened to.<br>
-        <br>
-        It may take a few minutes to load while the free Heroku server starts up.
+  <body data-resize>
+    <!-- login modal -->
+    <div id="login">
+      <div id="login-container">
+        <img width="100" height="100" src="./img/spotify-icon.png" />
+        <div id="login-text">Music Night</div>
+        <button type="button" id="login-button" class="login-button">
+          Log in with Spotify
+        </button>
       </div>
-      <div class="shortcut">
-        F11 to toggle fullscreen.
-      </div>
-      <div class='more-info'>
-        For more information on the app click the spotify logo in the top right.
-      </div>
-      <button type="button" id="login-button" class="button">Log in with Spotify</button>
-    </div>
-    <div id="loggedin">
-      <div id="user-profile">
-      </div>
-      <div id="oauth">
+      <div id="loggedin">
+        <div id="user-profile"></div>
+        <div id="oauth"></div>
       </div>
     </div>
-  </div>
-
-  <div id="wrapper">
-    <div id="container">
-
-      <!-- cover artwork -->
-      <div id="cover_container">
-        <div id="cover_background">
-          <div id="previousCover">
-            <div id="cover"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- track details -->
-      <div id="track-details">
-        <div id="track-text">
-          <div id="track"></div>
-          <div id="artist"></div>
-          <div id="album"></div>
-        </div>
-        <!-- <div id="controls">
-          <i class="material-icons">skip_previous</i>
-          <i class="material-icons">play_circle_outline</i>
-          <i class="material-icons">skip_next</i>
-        </div> -->
-      </div>
-
-      <!-- TODO: hide scrollbar when opened -->
-      <!-- info modal -->
-      <div id="information" class="reveal" data-reveal>
-        <div id="profile">
-          <div id="user">
-          </div>
-          <div id="profileInfo">
-            <div id="profileImg">
-            </div>
-            <div id="profileDetails">
-              <div id="email">
+    <div id="wrapper">
+      <div id="waiting-for-spotify">Waiting for Spotify...</div>
+      <div id="cover_bg_blur-prev" class="cover_bg_blur"></div>
+      <div id="cover_bg_blur" class="cover_bg_blur"></div>
+      <div id="container">
+        <!-- cover artwork -->
+        <div id="cover_container" style="opacity: 0">
+          <div id="cover_background">
+            <div id="cover">
+              <div id="albumCover">
+                <img id="cover-bg-white" src="./img/bg.jpg" />
+                <img id="cover-image-prev" class="cover-image" src="" />
+                <img id="cover-image" class="cover-image" src="" />
               </div>
-              <div id="product">
-              </div>
-              <div><sub>Open means a free spotify account.</sub>
-              </div>
-              <button type="button" data-close id="logout" class="button">Logout</button>
             </div>
           </div>
-          <hr />
-        </div>
-        <div id="about">
-          <h4>About the Project</h4>
-          <p>
-            This is a personal project that is no way sponsered or endorsed by Spotify. No user information is retained by this project.
-          </p>
-          <p>
-            Sometimes the album art shown will not match exactly with the Spotify player, this because of the way the data is fetched through the Spotify API.
-          </p>
-          <div class="project-details">
-            To see this projects source code visit: <br />
-            <a href="https://github.com/massivelines/fullscreen-album-art-for-spotify">
-              https://github.com/massivelines/fullscreen-album-art-for-spotify</a>
+          <!-- track details -->
+          <div id="track-details">
+            <div id="track-text">
+              <div id="track"></div>
+              <div id="artist"></div>
+              <!-- <div id="album"></div> -->
+            </div>
+            <!-- <div id="controls">
+            <i class="material-icons">skip_previous</i>
+            <i class="material-icons">play_circle_outline</i>
+            <i class="material-icons">skip_next</i>
+          </div> -->
           </div>
-          <div class="project-details">
-            To report an issue or suggetion visit: <br />
-            <a href="https://github.com/massivelines/fullscreen-album-art-for-spotify/issues">
-              https://github.com/massivelines/fullscreen-album-art-for-spotify/issues</a>
-          </div>
-
-
-
         </div>
-        <button class="close-button" data-close aria-label="Close modal" type="button">
 
-    <span aria-hidden="true">&times;</span>
-  </button>
+        <!-- TODO: hide scrollbar when opened -->
+        <!-- info modal -->
+        <div id="information" class="reveal" data-reveal>
+          <div id="profile">
+            <div id="user"></div>
+            <div id="profileInfo">
+              <div id="profileImg"></div>
+              <div id="profileDetails">
+                <div id="email"></div>
+                <div id="product"></div>
+                <div><sub>Open means a free spotify account.</sub></div>
+                <button type="button" data-close id="logout" class="button">
+                  Logout
+                </button>
+              </div>
+            </div>
+            <hr />
+          </div>
+          <div id="about">
+            <h4>About the Project</h4>
+            <p>
+              This is a personal project that is no way sponsered or endorsed by
+              Spotify. No user information is retained by this project.
+            </p>
+            <p>
+              Sometimes the album art shown will not match exactly with the
+              Spotify player, this because of the way the data is fetched
+              through the Spotify API.
+            </p>
+            <div class="project-details">
+              To see this projects source code visit: <br />
+              <a
+                href="https://github.com/massivelines/fullscreen-album-art-for-spotify"
+              >
+                https://github.com/massivelines/fullscreen-album-art-for-spotify</a
+              >
+            </div>
+            <div class="project-details">
+              To report an issue or suggetion visit: <br />
+              <a
+                href="https://github.com/massivelines/fullscreen-album-art-for-spotify/issues"
+              >
+                https://github.com/massivelines/fullscreen-album-art-for-spotify/issues</a
+              >
+            </div>
+          </div>
+          <button
+            class="close-button"
+            data-close
+            aria-label="Close modal"
+            type="button"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="hidden">
+    <div class="hidden"></div>
 
-  </div>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/what-input.js"></script>
+    <script src="js/vendor/foundation.js"></script>
 
-  <script src="js/vendor/jquery.js"></script>
-  <script src="js/vendor/what-input.js"></script>
-  <script src="js/vendor/foundation.js"></script>
-
-  <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
-  <script src="https://rawgit.com/DrewDahlman/Mason/master/dist/mason.js"></script>
-  <script src="https://login-node-for-spotify.herokuapp.com/spotifyLogin.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/plugins/foundation.util.triggers.js"></script>
-  <script src="js/app.js"></script>
-</body>
-
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
+    <script src="https://rawgit.com/DrewDahlman/Mason/master/dist/mason.js"></script>
+    <script src="http://localhost:5000/spotifyLogin.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/plugins/foundation.util.triggers.js"></script>
+    <script src="js/app.js"></script>
+  </body>
 </html>
