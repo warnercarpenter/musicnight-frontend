@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Spotify Album Covers</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,9 +15,13 @@
     </style>
     <link rel="stylesheet" href="css/foundation.css" />
     <link rel="stylesheet" href="css/app.css" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"
+    />
   </head>
 
-  <body data-resize>
+  <body>
     <!-- login modal -->
     <div id="login">
       <div id="login-container">
@@ -124,13 +127,13 @@
     <div class="hidden"></div>
 
     <script src="js/vendor/jquery.js"></script>
-    <script src="js/vendor/what-input.js"></script>
-    <script src="js/vendor/foundation.js"></script>
+    <!-- <script src="js/vendor/what-input.js"></script> -->
+    <!-- <script src="js/vendor/foundation.js"></script> -->
 
     <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
     <script src="https://rawgit.com/DrewDahlman/Mason/master/dist/mason.js"></script>
     <script src="https://musicnight-backend.herokuapp.com/spotifyLogin.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/plugins/foundation.util.triggers.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/plugins/foundation.util.triggers.js"></script> -->
     <script src="js/app.js"></script>
   </body>
 </html>
